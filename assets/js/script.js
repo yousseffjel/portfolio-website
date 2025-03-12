@@ -78,7 +78,9 @@ const filterFunc = function (selectedValue) {
   for (let i = 0; i < filterItems.length; i++) {
     if (selectedValue === "all") {
       filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
+    } else if (
+      selectedValue === filterItems[i].dataset.category.toLowerCase()
+    ) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
@@ -137,3 +139,88 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
   });
 }
+
+// Project modal variables
+const projectLinks = document.querySelectorAll("[data-project-link]");
+const projectModalContainer = document.querySelector(
+  "[data-project-modal-container]"
+);
+const projectModalCloseBtn = document.querySelector(
+  "[data-project-modal-close-btn]"
+);
+const projectOverlay = document.querySelector("[data-project-overlay]");
+
+// Project modal content variables
+const modalProjectImg = document.querySelector("[data-modal-project-img]");
+const modalProjectTitle = document.querySelector("[data-modal-project-title]");
+const modalProjectCategory = document.querySelector(
+  "[data-modal-project-category]"
+);
+const modalProjectDescription = document.querySelector(
+  "[data-modal-project-description]"
+);
+const modalProjectLive = document.querySelector("[data-modal-project-live]");
+const modalProjectGithub = document.querySelector(
+  "[data-modal-project-github]"
+);
+
+// Project data is now imported from project-data.js
+
+// Project modal toggle function
+const projectModalFunc = function () {
+  projectModalContainer.classList.toggle("active");
+  projectOverlay.classList.toggle("active");
+};
+
+// Add click event to all project items
+for (let i = 0; i < projectLinks.length; i++) {
+  projectLinks[i].addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const project = projectData[i];
+
+    modalProjectImg.src = project.imgSrc;
+    modalProjectImg.alt = project.title;
+    modalProjectTitle.textContent = project.title;
+    modalProjectCategory.textContent = project.category;
+    modalProjectDescription.innerHTML = `<p>${project.description}</p>`;
+
+    // Display technology tags if available
+    const techTagsContainer = document.querySelector(
+      "[data-modal-project-technologies]"
+    );
+    techTagsContainer.innerHTML = "";
+    if (project.technologies && project.technologies.length > 0) {
+      const techWrapper = document.createElement("div");
+      techWrapper.classList.add("tech-tags");
+      project.technologies.forEach((tech) => {
+        const tag = document.createElement("span");
+        tag.classList.add("tech-tag");
+        tag.textContent = tech;
+        techWrapper.appendChild(tag);
+      });
+      techTagsContainer.appendChild(techWrapper);
+    }
+
+    // Set links
+    if (project.liveLink !== "#") {
+      modalProjectLive.href = project.liveLink;
+      modalProjectLive.style.display = "inline-block";
+    } else {
+      modalProjectLive.style.display = "none";
+    }
+
+    if (project.githubLink !== "#") {
+      modalProjectGithub.href = project.githubLink;
+      modalProjectGithub.style.display = "inline-block";
+    } else {
+      modalProjectGithub.style.display = "none";
+    }
+
+    projectModalFunc();
+  });
+}
+
+// Add click events to modal close button and overlay
+projectModalCloseBtn.addEventListener("click", projectModalFunc);
+projectOverlay.addEventListener("click", projectModalFunc);
