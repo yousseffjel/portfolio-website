@@ -2,19 +2,6 @@
   #style.css
 \*-----------------------------------*/
 
-
-/**
- * copyright 2022 @codewithsadee
- */
-
-
-
-
-
-/*-----------------------------------*\
-  #CUSTOM PROPERTY
-\*-----------------------------------*/
-
 :root {
 
     /**
@@ -101,9 +88,6 @@
 }
 
 
-
-
-
 /*-----------------------------------*\
   #RESET
 \*-----------------------------------*/
@@ -165,8 +149,6 @@ html {
 body {
     background: var(--smoky-black);
 }
-
-
 
 
 
@@ -1322,7 +1304,7 @@ textarea.form-input::-webkit-resizer {
 }
 
 .form-btn:disabled:hover::before {
-    background: var(--bg-gradient-jet);
+    background: var (--bg-gradient-jet);
 }
 
 
@@ -2142,7 +2124,7 @@ textarea.form-input::-webkit-resizer {
 
 .thank-you-title {
     font-size: 2.5em;
-    color: var(--orange-yellow-crayola);
+    color: var (--orange-yellow-crayola);
     margin-bottom: 20px;
 }
 
@@ -2215,12 +2197,21 @@ textarea.form-input::-webkit-resizer {
     margin-bottom: 20px;
     border-radius: 14px;
     overflow: hidden;
+    width: 100%;
+    position: relative;
+    padding-top: 56.25%;
+    /* 16:9 aspect ratio */
 }
 
 .modal-project-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
+    margin-top: 17px;
+    border-radius: 14px;
 }
 
 .modal-project-category {
@@ -2236,6 +2227,7 @@ textarea.form-input::-webkit-resizer {
     font-weight: var(--fw-300);
     line-height: 1.6;
     margin-bottom: 20px;
+    max-width: 800px;
 }
 
 .modal-project-links {
