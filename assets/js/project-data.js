@@ -79,4 +79,14 @@ const projectData = [
     imgSrc: "./assets/images/projects/newconceptequipements.png",
     technologies: ["WordPress", "PHP", "JavaScript", "WooCommerce"],
   },
+  {
+    title: "O'Clock24",
+    category: "WordPress",
+    description:
+      "Developed a professional website for a company supplying equipment to hotels and restaurants.",
+    liveLink: "https://oclock24.com/",
+    githubLink: "#",
+    imgSrc: "./assets/images/projects/oclock24.png",
+    technologies: ["WordPress", "PHP", "JavaScript", "WooCommerce"],
+  },
 ];
