@@ -8,7 +8,7 @@ const projectData = [
     category: "Front-end",
     description:
       "Created and launched a personal portfolio using ReactJS and TailwindCSS. Showcases projects and skills with a clean, responsive design. Currently in development with ongoing improvements.",
-    liveLink: "#",
+    liveLink: "https://portfoliob.pages.dev/",
     githubLink: "https://github.com/yousseffjel/portfolio",
     imgSrc: "./assets/images/projects/portfolio.png",
     technologies: ["HTML", "CSS", "JavaScript", "ReactJS", "TailwindCSS"],
